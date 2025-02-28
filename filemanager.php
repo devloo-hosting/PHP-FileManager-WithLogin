@@ -1,13 +1,5 @@
 <?php
-session_start();
-require 'db.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit();
-}
-
-$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":false,"theme":"dark"}';
+$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":true,"hide_Cols":false,"theme":null}';
 
 define('VERSION', '2.6');
 
@@ -18,6 +10,13 @@ $use_auth = false;
 $auth_users = array(
     'admin' => '$2y$10$0SzZG1ELh2.9tPt.myI0TOm1r0nMJBGqkXFfFXurzKcNim9v4cszu'
 );
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $readonly_users = array(
     'user'
